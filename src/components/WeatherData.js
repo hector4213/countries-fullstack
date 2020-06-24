@@ -6,15 +6,16 @@ const WeatherData = ({ country }) => {
   const [weather, setWeather] = useState("");
 
   useEffect(() => {
-    const fetchWeather = (capital) => {
+
+    const fetchWeather = () => {
       axios
         .get(
-          `http://api.weatherstack.com/current?access_key=${API_KEY}&query=${capital}`
+          `http://api.weatherstack.com/current?access_key=${API_KEY}&query=${country}`
         )
         .then((res) => setWeather(res.data));
     };
-    fetchWeather(country);
-  }, []);
+    fetchWeather();
+  }, [country]);
   console.log(weather);
 
   if (weather.location === undefined) {
