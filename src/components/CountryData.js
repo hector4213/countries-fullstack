@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import CountryList from "../components/CountryList";
 import WeatherData from '../components/WeatherData'
 
@@ -15,14 +15,14 @@ const CountryData = ({ countries, changeFilter}) => {
   return (
     <div>
       {countries.map((country) => (
-        <div>
+        <div key={country.alpha3Code}>
           <h1>{country.name}</h1>
           <p>Capital: {country.capital}</p>
           <p>Population: {country.population}</p>
           <h1>Languages</h1>
           <ul>
             {country.languages.map((language) => (
-              <li>{language.name}</li>
+              <li key={language.name}>{language.name}</li>
             ))}
           </ul>
           <img
